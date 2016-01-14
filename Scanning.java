@@ -10,7 +10,7 @@ public class Scanning{
     
     saying = scan.nextLine();
     
-    System.out.println( "in CAPS the input was " + saying.toUpperCase());
+    System.out.println( "the input was " + saying.toUpperCase());
     
   }
 }
