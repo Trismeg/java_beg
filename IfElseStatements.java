@@ -1,4 +1,4 @@
-public class IfStatements{
+public class IfElseStatements{
   
   public static void main(String[] args){
    // boolean state1 = true;
@@ -8,10 +8,9 @@ public class IfStatements{
       System.out.println("The boolean is TRUE!!!");
       System.out.println("Antother line of IF One");
     }
-    
-    if ( false){
-      System.out.println("The boolean is FALSE!!!");
-      System.out.println("Antother line of IF Two");
+    else {
+      System.out.println("The boolean is FALSE!!!  This is else.");
+      System.out.println("Antother line of else");
     }
     
   }
