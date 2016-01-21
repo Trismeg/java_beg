@@ -19,7 +19,35 @@ public class Rando{
     int[] test = tenArray(L);
     
     for(int i=0; i<L; i++)
-    {System.out.println(test[i]);}
+    {System.out.print(test[i]+" ");}
+    
+    int temp;
+    boolean flagG = true;
+    boolean flag1 = true;
+    
+    while( flagG )
+    {
+      flag1=true;
+      
+    for (int i=0; i<(L-1); i++){
+      if(test[i+1]<test[i]){
+        temp=test[i+1];
+        test[i+1]=test[i];
+        test[i]=temp;
+        flag1=false;
+      }
+      if(i==(L-2)){
+        if(flag1==true){
+          flagG=false;
+        }
+      }
+    }
+    }
+    
+    {System.out.println(" ");}
+    
+    for(int i=0; i<L; i++)
+    {System.out.print(test[i]+" ");}
     
   }
  }
