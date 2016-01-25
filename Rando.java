@@ -10,6 +10,8 @@ public class Rando{
        whatever[i]=tener();}
      return whatever;
      }
+   
+  
   
   public static void main(String[] args){
     
@@ -49,5 +51,15 @@ public class Rando{
     for(int i=0; i<L; i++)
     {System.out.print(test[i]+" ");}
     
+    System.out.println(" ");
+    System.out.println(test.length);
+    
+    for (int i=0; i<(test.length/2); i++){
+      temp=test[i];
+      test[i]=test[test.length-1-i];
+      test[test.length-1-i]=temp;}
+    
+    for(int i=0; i<L; i++)
+    {System.out.print(test[i]+" ");}
   }
  }
