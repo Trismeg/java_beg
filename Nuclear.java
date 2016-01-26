@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Nuclear{
   
    public static boolean no_decay(double chance_of_decay){
@@ -9,9 +11,20 @@ public class Nuclear{
    
   public static void main(String[] args){
     
-    int N=100; //set the initial number of atoms
+    Scanner scan = new Scanner(System.in);
+    
+    
+    
+    int N; //set the initial number of atoms
+    System.out.println( "input N, the initial number of atoms.");
+    N = scan.nextInt();
+    
     int survive; // this is a temporary variable to count the number of survivors per iteration
-    double prob=0.5; // this is the chance of decay process happening for an atom each iteration
+    
+    double prob; // this is the chance of decay process happening for an atom each iteration
+    System.out.println( "input P, the probability of decay.");
+    prob = scan.nextDouble();
+    
     int steps=0;
     
     while(N>0){
