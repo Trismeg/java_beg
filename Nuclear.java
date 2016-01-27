@@ -11,6 +11,8 @@ public class Nuclear{
    
   public static void main(String[] args){
     
+    
+    
     Scanner scan = new Scanner(System.in);
     
     
@@ -27,14 +29,21 @@ public class Nuclear{
     
     int steps=0;
     
+    StdDraw.setXscale( 0. , 8.0 / prob);
+    StdDraw.setYscale(0. , (float) N );
+    
     while(N>0){
       System.out.print( N + " ");
+      StdDraw.point((double) steps , (float) N );
       survive = 0;  steps++;
       for(int i=0; i<N; i++){
         if( no_decay( prob) ){
           survive++;
         }
       }
+      
+      StdDraw.line( steps -1,N,steps,survive);
+      
       N=survive;
     }
     
