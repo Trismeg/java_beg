@@ -10,12 +10,8 @@ public class Nuclear{
     }
    
   public static void main(String[] args){
-    
-    
-    
+     
     Scanner scan = new Scanner(System.in);
-    
-    
     
     int N; //set the initial number of atoms
     System.out.println( "input N, the initial number of atoms.");
@@ -47,7 +43,7 @@ public class Nuclear{
       N=survive;
     }
     
-    System.out.print( "0"+ "\n The number of time steps was " + steps + "\n");
+    System.out.print( "0"+ "\nThe number of time steps was " + steps + "\n");
     
   }
   
