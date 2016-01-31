@@ -13,15 +13,18 @@ public class Nuclear2{
      
     Scanner scan = new Scanner(System.in);
     
-    int N; //set the initial number of atoms A
-    int M=0; //number of B
-    int L=0; //number of C
-    System.out.println( "input N, the initial number of atoms.");
-    N = scan.nextInt();
+    int A; //set the initial number of atoms A
+    int B=0; //number of B
+    int C=0; //number of C
+    System.out.println( "input the initial number of atoms.");
+    A = scan.nextInt();
     
-    int surviveA; // this is a temporary variable to count the number of survivors of A per iteration
-    int surviveB; // this is a temporary variable to count the number of survivors of A per iteration
-    int surviveC; // this is a temporary variable to count the number of survivors of A per iteration
+    int newA; // this is a temporary variable to count the number of survivors of A per iteration
+    int newB; // this is a temporary variable to count the number of survivors of B per iteration
+    int newC; // this is a temporary variable to count the number of survivors of C per iteration
+    
+    int addB;
+    int addC;
     
     double probAB; // this is the chance of decay process happening for an atom A to B each iteration
     System.out.println( "input P, the probability of decay for A to B.");
@@ -33,35 +36,47 @@ public class Nuclear2{
     
     int steps=0;
     
-    StdDraw.setXscale( 0. , 8.0 / probAB);
-    StdDraw.setYscale(0. , (float) N );
+    StdDraw.setXscale( 0. , 8.0 / Math.min(probAB,probBC));
+    StdDraw.setYscale(0. , (float) A );
     
-    while(N>0){
-      System.out.print( N + " ");
-      System.out.print( M + " ");
-      System.out.print( L + " ");
-      StdDraw.point((double) steps , (float) N );
-      StdDraw.point((double) steps , (float) M );
-      StdDraw.point((double) steps , (float) L );
-      surviveA = 0; surviveB = 0; surviveC = 0;  steps++;
-      for(int i=0; i<N; i++){
+    while(A>0 | B>0){
+      System.out.print( A + " ");
+      System.out.print( B + " ");
+      System.out.print( C + " ");
+      
+      StdDraw.point((double) steps , (float) A );
+      StdDraw.point((double) steps , (float) B );
+      StdDraw.point((double) steps , (float) C );
+     
+      newA = 0; newB = 0; newC = 0;  addB=0; addC=0;
+      steps++;
+      
+      for(int i=0; i<A; i++){
         if( no_decay( probAB) ){
-          surviveA++;
+          newA++;
         }
       }
       
-      StdDraw.line( steps -1,N,steps,surviveA);
-      M=N-surviveA;
-      N=surviveA;
-      for(int i=0; i<N; i++){
+      StdDraw.line( steps -1,A,steps,newA);
+      
+      addB=(A-newA);
+      A=newA;
+      
+      for(int i=0; i<B; i++){
         if( no_decay( probBC) ){
-          surviveB++;
+        }
+        else{
+          addC++;
         }
       }
       
-      StdDraw.line( steps -1,M,steps,surviveB);
-      L=M-surviveB;
-      M=surviveB;
+      newB=B+addB-addC;
+      StdDraw.line( steps -1,B,steps,newB);
+      B=newB;
+      
+      newC=C+addC;
+      StdDraw.line( steps -1,C,steps,newC);  
+      C=newC;
       
       
       

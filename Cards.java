@@ -21,6 +21,8 @@ public class Cards{
   public static String deal(String[] the_deck){
     count=count-1;    
     return the_deck[count];}
+  
+  public static int value(String the_card){
     
   
   public static void main(String[] args){
