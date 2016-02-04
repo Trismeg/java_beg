@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.Scanner;
 
 public class Cards{
   
@@ -38,8 +39,8 @@ public class Cards{
  
  public static int value(String[] the_hand){
    int sum=0;
-   for(int i=0; i<the_hand.legth;i++){
-     sum = sum + value(the_hand.[i]);
+   for(int i=0; i<the_hand.length;i++){
+     sum = sum + value(the_hand[i]);
    }
    return sum;
  }
