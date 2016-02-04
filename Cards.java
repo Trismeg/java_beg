@@ -82,7 +82,7 @@ public class Cards{
         deck[ 13*i+j ]= cardName + "_" +suit[i];
       }
     }
-      
+ /*     
     for(int i=0; i<52; i++){
         System.out.println(deck[i]);
      }
@@ -96,13 +96,15 @@ public class Cards{
       }
     
     System.out.println("DEAL");
-    
+ */   
     //String[] delt = new String[2];
     //delt[0]=deal(deck);
     //delt[1]=deal(deck);
     
    // System.out.println(delt[0] + " and " + delt[1] + " and " + count + " cards remaining.");
-  String say;
+  shuffle(deck, 1000);
+    
+    String say;
   boolean state=true;
     
     ArrayList hand = new ArrayList();
