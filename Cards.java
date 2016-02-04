@@ -132,10 +132,15 @@ public class Cards{
          else{state=false;}
     }
     
+    while( value(dealer_hand)<17 ){
+      dealer_hand.add( deal(deck) );
+    }
+      
+    
     System.out.println("Dealer has: " + dealer_hand);
     System.out.println("Dealer score is: " + value(dealer_hand));
     
-    if( value(hand)>value(dealer_hand) && value(hand)<22){
+    if( (value(hand)>value(dealer_hand) && value(hand)<22) | (value(dealer_hand) > 21) ){
       System.out.println( "YOU WIN !!!!");
     }
     else{System.out.println( "YOU LOSE. BOO !!!!");}
