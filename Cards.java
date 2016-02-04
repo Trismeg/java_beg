@@ -57,6 +57,8 @@ public class Cards{
   
   public static void main(String[] args){
    
+    Scanner scan = new Scanner(System.in);
+    
     String[] deck = new String[52];
     String[] suit = new String[4];
     int[] card = new int[13];
@@ -100,15 +102,50 @@ public class Cards{
     //delt[1]=deal(deck);
     
    // System.out.println(delt[0] + " and " + delt[1] + " and " + count + " cards remaining.");
+  String say;
+  boolean state=true;
+    
     ArrayList hand = new ArrayList();
-    hand.add( deal(deck) );
-    hand.add( deal(deck) );
-    
-    System.out.println(hand.get(0) + " and " + hand.get(1) + " and " + count + " cards remaining.");
-    
+    ArrayList dealer_hand = new ArrayList();
+    dealer_hand.add( deal(deck) );
+    dealer_hand.add( deal(deck) );
     hand.add( deal(deck) );
     
+    while(state){
+      
+    hand.add( deal(deck) );
+    
+    System.out.println("Dealer showing: " + dealer_hand.get(1));
     System.out.println("Contents of hand: " + hand);
-    System.out.println(value(hand));
+    System.out.println("Your score is: " + value(hand));
+    
+    if(value(hand)>21){
+      System.out.println("BUST!!!!");
+      break;
+    }
+    
+    System.out.println( "hit[H] or stand[S]?");
+         say=scan.nextLine();
+         if(say.equals("H")){state=true;}
+         else{state=false;}
+    }
+    
+    System.out.println("Dealer has: " + dealer_hand);
+    System.out.println("Dealer score is: " + value(dealer_hand));
+    
+    if( value(hand)>value(dealer_hand) && value(hand)<22){
+      System.out.println( "YOU WIN !!!!");
+    }
+    else{System.out.println( "YOU LOSE. BOO !!!!");}
+    
+    
+    
+    
+   // System.out.println(hand.get(0) + " and " + hand.get(1) + " and " + count + " cards remaining.");
+    
+   // hand.add( deal(deck) );
+    
+    
+   // System.out.println(value(hand));
   }
 }
