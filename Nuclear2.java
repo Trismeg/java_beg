@@ -82,7 +82,7 @@ public class Nuclear2{
       
     }
     
-    System.out.print( "0"+ "\nThe number of time steps was " + steps + "\n");
+    System.out.print( "\nThe number of time steps was " + steps + "\n");
     
   }
   

@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Cards{
   
   static int count=52; //the count represents the number of cards remaining in the deck
@@ -22,7 +24,34 @@ public class Cards{
     count=count-1;    
     return the_deck[count];}
   
-  public static int value(String the_card){
+ public static int value(String the_card){
+   char first = the_card.charAt(0);
+   if (first=='1'|first=='J'|first=='Q'|first=='K'){
+     return 10;
+   }
+     else if(first=='A'){
+       return 1;}
+     else{
+       return Character.getNumericValue(first);
+     }
+   }
+ 
+ public static int value(String[] the_hand){
+   int sum=0;
+   for(int i=0; i<the_hand.legth;i++){
+     sum = sum + value(the_hand.[i]);
+   }
+   return sum;
+ }
+ 
+ public static int value(ArrayList the_hand){
+   int sum=0;
+   for(int i=0; i<the_hand.size();i++){
+     sum = sum + value(the_hand.get(i).toString());
+   }
+   return sum;
+ }
+   
     
   
   public static void main(String[] args){
@@ -51,25 +80,34 @@ public class Cards{
       }
     }
       
-  /*  for(int i=0; i<52; i++){
+    for(int i=0; i<52; i++){
         System.out.println(deck[i]);
      }
-   */
-    shuffle(deck, 1000);
+   
+   shuffle(deck, 1000);
     
-   // System.out.println("SHUFFLED");
+    System.out.println("SHUFFLED");
     
-   /* for(int i=0; i<52; i++){
+    for(int i=0; i<52; i++){
         System.out.println(deck[i]);
       }
-    */
     
-    String[] delt = new String[2];
-    delt[0]=deal(deck);
-    delt[1]=deal(deck);
+    System.out.println("DEAL");
     
-    System.out.println(deck[0] + " and " + deck[1] + " and " + count + " cards remaining.");
+    //String[] delt = new String[2];
+    //delt[0]=deal(deck);
+    //delt[1]=deal(deck);
     
+   // System.out.println(delt[0] + " and " + delt[1] + " and " + count + " cards remaining.");
+    ArrayList hand = new ArrayList();
+    hand.add( deal(deck) );
+    hand.add( deal(deck) );
     
+    System.out.println(hand.get(0) + " and " + hand.get(1) + " and " + count + " cards remaining.");
+    
+    hand.add( deal(deck) );
+    
+    System.out.println("Contents of hand: " + hand);
+    System.out.println(value(hand));
   }
 }
