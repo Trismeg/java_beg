@@ -25,13 +25,36 @@ public class Cards{
     count=count-1;    
     return the_deck[count];}
   
+  public static int aces(String the_card){
+   if(the_card.charAt(0)=='A'){
+       return 1;}
+     else{
+       return 0;}
+   }
+  
+  public static int aces(String[] the_hand){
+   int sum=0;
+   for(int i=0; i<the_hand.length;i++){
+     sum = sum + aces(the_hand[i]);
+   }
+   return sum;
+ }
+  
+  public static int aces(ArrayList the_hand){
+   int sum=0;
+   for(int i=0; i<the_hand.size();i++){
+     sum = sum + aces(the_hand.get(i).toString());
+   }
+   return sum;
+ }
+  
  public static int value(String the_card){
    char first = the_card.charAt(0);
    if (first=='1'|first=='J'|first=='Q'|first=='K'){
      return 10;
    }
      else if(first=='A'){
-       return 1;}
+       return 11;}
      else{
        return Character.getNumericValue(first);
      }
@@ -47,13 +70,18 @@ public class Cards{
  
  public static int value(ArrayList the_hand){
    int sum=0;
+   int num_aces=aces(the_hand);
    for(int i=0; i<the_hand.size();i++){
      sum = sum + value(the_hand.get(i).toString());
+   }
+   while(num_aces>0 && sum>21){
+     sum=sum-10;
+     num_aces=num_aces-1;
    }
    return sum;
  }
    
-    
+   
   
   public static void main(String[] args){
    
