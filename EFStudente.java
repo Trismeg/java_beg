@@ -8,6 +8,12 @@ public class EFStudente{
     this.id = -1;
   }
   
+  public EFStudente(int an_id){
+    this.name = new String( "Joe Donut" );
+    this.id = an_id;
+  }
+                    
+                    
   public void setName( String a_name){
     this.name = a_name;
   }
@@ -29,6 +35,6 @@ public class EFStudente{
    }
    
    public void intro(EFStudente other){
-     System.out.println("Hello " + other.getName() + ". My name is " + this.getName() + ".");
+     System.out.println("Hello " + other.getName()+ other.getID()+ ". My name is " + this.getName() + this.getID()+".");
    }
 }

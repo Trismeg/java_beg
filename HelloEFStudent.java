@@ -19,9 +19,16 @@ public class HelloEFStudent{
     
     System.out.println("the 10th sudent is " + cs101[9].getName() + " with id# "+ cs101[9].getID());
     
+   // for(int i=0; i<cs101.length; i++){
+    //  cs101[i].intro(cs101[(i+1)%21]);
+   //   cs101[(i+1)%21].intro(cs101[i]);}
+    
     for(int i=0; i<cs101.length; i++){
-      cs101[i].intro(cs101[(i+1)%21]);
-      cs101[(i+1)%21].intro(cs101[i]);}
+      for(int j=0; j<cs101.length; j++){
+        if(i==j){}
+        else{cs101[i].intro(cs101[j]);}
+      }
+    }
     
   }
   

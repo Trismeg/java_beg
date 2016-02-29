@@ -14,5 +14,18 @@ public class HelloEFStudente{
     student2.intro(student1);
     student1.intro(student2);
     
+    EFStudente[] cs17 = new EFStudente[11];
+    for(int i=0; i<cs17.length; i++){
+      cs17[i] = new EFStudente(1000+i );}
+    
+   // for(int i=0; i<cs17.length; i++){
+   //   cs17[i].intro(cs17[(i+1)% cs17.length ]);}
+    
+    for(int i=0; i<cs17.length; i++){
+      for(int j=0; j<cs17.length; j++){
+        if(!(i==j)){cs17[i].intro(cs17[j]);}
+      }}
+    
+    
   }
 }
