@@ -27,6 +27,7 @@ public class InventoryEntry{
   public void setNFPA(int[] i){this.nfpa_hfr = i;}
   public void setHazards(String[] s){this.hazards = s;}
   public void setSara(boolean b){this.sara313 = b;}
+  public void setSara(String s){if(s.charAt(0)=='y'){this.sara313 = true;}}
   public void setLink(String s){this.link = s;}
   public void setId(String s){this.id_hash = s;}
   
