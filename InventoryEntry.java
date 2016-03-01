@@ -50,6 +50,7 @@ public class InventoryEntry{
     System.out.println(entry1.getChemicalName());
     System.out.println(entry1.getCas());
     System.out.println(entry1.getBuilding());
+    System.out.println(entry1.getSara());
   }
   
 }
