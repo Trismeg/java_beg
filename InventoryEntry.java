@@ -45,6 +45,100 @@ public class InventoryEntry{
   public String getId(){return this.id_hash;}   
   
  
+  //This is our extractor method.  
+  //It takes a string from a line of the csv and spawns a new inventory entry
+  public static InventoryEntry entrySpawner(String line){
+    
+     //HERE WE ARE EXTRACTING THE ====CHEMICAL_NAME
+                String thing;
+                thing = line.substring(0,line.indexOf(",")); //this takes the first comma seperated field from the line and assigns it to "thing"
+                //System.out.println(thing);//print "thing"
+                InventoryEntry entry1 = new InventoryEntry(thing);//this uses the chemical name in "thing" to create a new InventoryEntry object 
+                
+                //HERE WE ARE EXTRACTING THE ====CAS#
+                line = line.substring(line.indexOf(",")+1);//the new line is the old line without the leading field
+                thing = line.substring(0,line.indexOf(","));//the new "thing" is the leading field of the first line
+               // System.out.println(thing);//print cas#
+                entry1.setCas(Integer.parseInt(thing.replaceAll("-","")));//take the hyphens out of the cas# and convert to integer
+                
+                //HERE WE ARE EXTRACTING THE ====BUILDING
+                line = line.substring(line.indexOf(",")+1);
+                thing = line.substring(0,line.indexOf(","));
+               // System.out.println(thing);
+                entry1.setBuilding(thing);
+                
+                //HERE WE ARE EXTRACTING THE ====DEPARTMENT
+                line = line.substring(line.indexOf(",")+1);
+                thing = line.substring(0,line.indexOf(","));
+                System.out.println(thing);
+                entry1.setDepartment(thing);
+                
+                //HERE WE ARE EXTRACTING THE ====ROOM
+                line = line.substring(line.indexOf(",")+1);
+                thing = line.substring(0,line.indexOf(","));
+                //System.out.println(thing);
+                entry1.setRoom(Integer.parseInt(thing));//convert to integer
+                
+                //HERE WE ARE EXTRACTING THE ====QUANTITY
+                line = line.substring(line.indexOf(",")+1);
+                thing = line.substring(0,line.indexOf(","));
+                //System.out.println(thing);
+                entry1.setQuantity(Integer.parseInt(thing));
+                
+                //HERE WE ARE EXTRACTING THE ====UNIT
+                line = line.substring(line.indexOf(",")+1);
+                thing = line.substring(0,line.indexOf(","));
+                System.out.println(thing);
+                entry1.setUnit(thing);
+                
+                //initializing the NFPA [health,flammability,reactivity] array
+                int[] nfpa = new int[3];
+                
+                //HERE WE ARE EXTRACTING THE ====HEALTH
+                line = line.substring(line.indexOf(",")+1);
+                thing = line.substring(0,line.indexOf(","));
+                //System.out.println(thing);
+                nfpa[0]=Integer.parseInt(thing);
+                
+                //HERE WE ARE EXTRACTING THE ====FLAMMABILITY
+                line = line.substring(line.indexOf(",")+1);
+                thing = line.substring(0,line.indexOf(","));
+                System.out.println(thing);
+                nfpa[1]=Integer.parseInt(thing);
+                
+                //HERE WE ARE EXTRACTING THE ====REACTIVITY
+                line = line.substring(line.indexOf(",")+1);
+                thing = line.substring(0,line.indexOf(","));
+                //System.out.println(thing);
+                nfpa[2]=Integer.parseInt(thing);
+                
+                //setting nfpa int[]
+                entry1.setNFPA( nfpa );
+                
+                //HERE WE ARE EXTRACTING THE ====HAZARDS  
+                line = line.substring(line.indexOf(",")+1);
+                thing = line.substring(0,line.indexOf(","));
+                //System.out.println(thing);
+                String[] hazards = thing.split("/"); 
+                entry1.setHazards(hazards);
+                
+                //HERE WE ARE EXTRACTING THE ====SARA313
+                line = line.substring(line.indexOf(",")+1);
+                thing = line.substring(0,line.indexOf(","));
+               // System.out.println(thing);
+                entry1.setSara(thing);
+                
+                //HERE WE ARE EXTRACTING THE ====MSDS-LINK
+                line = line.substring(line.indexOf(",")+1);
+               // System.out.println(line);
+                entry1.setLink(line);
+                
+                return entry1;
+  }
+  
+  
+  
+  
   
   public static void main(String[] args){
     InventoryEntry entry1 = new InventoryEntry( "potassium" );
