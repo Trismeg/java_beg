@@ -44,7 +44,27 @@ public class InventoryEntry{
   public String getLink(){return this.link;}
   public String getId(){return this.id_hash;}   
   
- 
+  public String toString(){
+    String haz = this.getHazards()[0];
+    for (int i=1; i<this.getHazards().length; i++){
+      haz = haz + "/" + this.getHazards()[i];} 
+      
+    return this.getChemicalName() + "," +
+           this.getCas() + "," +
+           this.getBuilding() + "," +
+           this.getDepartment() + "," +
+           this.getRoom() + "," +
+           this.getQuantity() + "," +
+           this.getUnit() + "," +
+           this.getNFPA()[0] + "," +
+           this.getNFPA()[1] + "," +
+           this.getNFPA()[2] + "," +
+           haz + "," +
+           this.getSara() + "," +
+           this.getLink() + "," +
+           this.getId(); 
+  }
+           
   //This is our extractor method.  
   //It takes a string from a line of the csv and spawns a new inventory entry
   public static InventoryEntry entrySpawner(String line){

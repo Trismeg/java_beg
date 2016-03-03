@@ -18,17 +18,19 @@ public class ReadFile1 {
             
             String thing;
             
-                String line = input.nextLine();
-                line = input.nextLine();
-                line = input.nextLine();
-                line = input.nextLine();
-                line = input.nextLine();
-                line = input.nextLine();
+            int startline = 6;
+            int endline = 8;
+            InventoryEntry[] inventory = new InventoryEntry[endline - startline +1];
+            
+                String line;
+                for(int i=0; i< startline - 1 ; i++){
+                line = input.nextLine();}
                 
-                InventoryEntry entry1 = InventoryEntry.entrySpawner(line);
+                for(int i=0; i<inventory.length ; i++){  
+                  line = input.nextLine();
+                inventory[i] = InventoryEntry.entrySpawner(line);}
                 
-                
-                //PRINTING ALL THE FIELDS
+                /* PRINTING ALL THE FIELDS
                 System.out.println(entry1.getChemicalName());
                 System.out.println(entry1.getCas());
                 System.out.println(entry1.getBuilding());
@@ -39,7 +41,10 @@ public class ReadFile1 {
                 System.out.println(entry1.getHazards()[0]);
                 System.out.println(entry1.getSara());
                 System.out.println(entry1.getLink());
+                */
                 
+                for (int i=0; i<inventory.length; i++){
+                  System.out.println(inventory[i].toString());}
                 
                 
                 
