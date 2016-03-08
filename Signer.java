@@ -31,12 +31,12 @@ class Signer{
       
       byte[] realSig = dsa.sign();
       
-      FileOutputStream sigfos = new FileOutputStream("signature");
+      FileOutputStream sigfos = new FileOutputStream("signature2");
       sigfos.write(realSig);
       sigfos.close();
       
       byte[] key =pub.getEncoded();
-      FileOutputStream keyfos = new FileOutputStream("pub_key");
+      FileOutputStream keyfos = new FileOutputStream("pub_key2");
       keyfos.write(key);
       keyfos.close();
       
