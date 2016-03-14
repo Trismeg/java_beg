@@ -45,10 +45,19 @@ public class Particle {
    double pe_1_2 = e1.pEnergy(p1);
    System.out.println(pe_1_2);
    
-   Particle[] particles = new Particle[10000];
+  /* Particle[] particles = new Particle[100];
    for(int i=0; i<particles.length; i++){
      particles[i]= new Particle(M_E,-E,"electron");
      particles[i].setPosition(Math.random(),Math.random());}
+   */
+   double r;
+   double theta;
+   Particle[] particles = new Particle[100];
+   for(int i=0; i<particles.length; i++){
+     particles[i]= new Particle(M_E,-E,"electron");
+     r=Math.random();
+     theta= 2*Math.PI*Math.random();
+     particles[i].setPosition(r*Math.cos(theta),r*Math.sin(theta));}
    
    System.out.println(totalPEnergy(particles));
  }
