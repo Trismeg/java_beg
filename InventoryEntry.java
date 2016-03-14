@@ -160,7 +160,7 @@ public class InventoryEntry{
   
   
   
-  public static void main(String[] args){
+ public static void main(String[] args){
     InventoryEntry entry1 = new InventoryEntry( "potassium" );
     System.out.println(entry1.getChemicalName());
     System.out.println(entry1.getCas());
