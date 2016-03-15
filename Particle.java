@@ -36,6 +36,39 @@ public class Particle {
        sum = sum + parts[i].pEnergy(parts[j]);}}
    return sum;}
  
+ public double partialPEnergy(int k, Particle[] parts){
+   double sum=0;
+   for(int i=0;i<parts.length;i++){
+     if(i!=k){sum=sum+parts[i].pEnergy(parts[k]);}}
+   return sum;}
+ 
+  public double[] grad(int k, Particle[] parts, double delta){  
+   double temp_x = parts[k].x;
+   double temp_y = parts[k].y;
+   
+   parts[k].setPosition(temp_x,temp_y+delta);
+   double parE_u=partialPEnergy(k,parts);
+   parts[k].setPosition(temp_x,temp_y-delta);
+   double parE_d=partialPEnergy(k,parts);
+   parts[k].setPosition(temp_x,temp_y-delta);
+   double parE_l=partialPEnergy(k,parts);
+   parts[k].setPosition(temp_x+delta,temp_y);
+   double parE_r=partialPEnergy(k,parts);
+   
+   parts[k].setPosition(temp_x,temp_y);
+   double grad_x=(parE_r-parE_l)/(2*delta);
+   double grad_y=(parE_u-parE_d)/(2*delta);
+   
+   double[] output = new double[2];
+   output[0]=grad_x;
+   output[1]=grad_y;
+   
+   return output;
+  
+  }
+ 
+ 
+ 
  public static void main(String[] args){
    Particle e1 = new Particle ( M_E,-E,"electron");
    e1.setPosition(0,A0);
@@ -59,6 +92,14 @@ public class Particle {
      theta= 2*Math.PI*Math.random();
      particles[i].setPosition(r*Math.cos(theta),r*Math.sin(theta));}
    
+   boolean state = true;
+  
+  /* 
+   while(state){
+     for(int i=0; i<particles.length; i++){
+       parE=partialPEnergy(i, particles);
+       
+   */
    System.out.println(totalPEnergy(particles));
  }
  
