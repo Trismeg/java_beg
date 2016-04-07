@@ -16,6 +16,8 @@ public class Person{
   public int getAge(){return this.age;}
   public String getName(){return this.name;}
   
+  public void intro(){
+    System.out.println("Hello my name is " + this.getName());}
   
   
 }
