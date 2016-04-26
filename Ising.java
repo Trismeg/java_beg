@@ -2,11 +2,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.text.DecimalFormat;
 
-
 class Ising extends Canvas implements Runnable {
 
- int size = 100;        
- int squareWidth = 10;
+ int size = 80;        
+ int squareWidth = 5;
  double sum =0.0;
  double M=0.0;
  int canvasSize = size * squareWidth;  
@@ -25,7 +24,6 @@ class Ising extends Canvas implements Runnable {
  Graphics offScreenGraphics;
  Color upColor = new Color(128,128,128);  // Gray
  Color downColor = new Color(255,255,255); // White
- 
  
  Ising() {
   Frame isingFrame = new Frame("Ising Model");
@@ -55,8 +53,7 @@ class Ising extends Canvas implements Runnable {
   });
   controlPanel.add(bScroller);
   controlPanel.add(new Label("     ")); 
-  
-  
+   
   controlPanel.add(tLabel);
   tScroller = new Scrollbar(Scrollbar.HORIZONTAL,227,1,1,1001) {
    public Dimension getPreferredSize() {
@@ -115,9 +112,6 @@ class Ising extends Canvas implements Runnable {
   t.start();       
  }
 
-
- 
- 
  public void run() {
   while (true) {
    if (running) {
@@ -130,7 +124,6 @@ class Ising extends Canvas implements Runnable {
      int j = (int) (Math.random() * size);
      double eDiff = deltaU(i,j,bfield,Jconstant); // compute energy change if flipped
      
- 
      if ((eDiff <= 0) || (Math.random() < Math.exp(-eDiff/temp))) { 
       s[i][j] *= -1;
       sum = sum + s[i][j];
@@ -141,22 +134,12 @@ class Ising extends Canvas implements Runnable {
      }
     }
    
-      
-  
-    
- 
- 
     repaint(); 
    }
    
     try { Thread.sleep(1); } catch (InterruptedException e) {} // sleep time in milliseconds
   }
  }
-  
- 
-  
- 
- 
   
  double deltaU(int i, int j, double b,double J) {
         int leftS, rightS, topS, bottomS; 
@@ -169,8 +152,6 @@ class Ising extends Canvas implements Runnable {
         return J * s[i][j] * (leftS + rightS + topS + bottomS)- b * s[i][j];
         
     }  
-  
- 
    
  void colorSquare(int i, int j) {
   if (s[i][j] == 1) offScreenGraphics.setColor(upColor); 
@@ -178,7 +159,6 @@ class Ising extends Canvas implements Runnable {
   offScreenGraphics.fillRect(i*squareWidth,j*squareWidth,squareWidth,squareWidth);
  }
 
- 
  public void update(Graphics g) {
   paint(g);
  }
