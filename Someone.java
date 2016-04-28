@@ -25,7 +25,10 @@ public class Someone{
   public static int rando(int max){
     return (int)Math.floor((max+1)*Math.random());}
   
- 
+  public boolean evian(){
+    if(this.is_eve){return true;}
+    else if(this.mother==null){return false;}
+    else {return this.mother.evian();}}
   
   public static void main(String[] args){
     //int P=Someone.P;
@@ -51,11 +54,11 @@ public class Someone{
    // System.out.println(gals[0].evian());
    // System.out.println(gals[1].evian());
    // System.out.println(gals[P-1].evian());
-    //int sum=0;
-   // for (int i=0; i<P; i++){
-    //  if(gals[i].evian()){sum++;}
-   // }
-   // System.out.println("the number of evians is " + sum);
+    int sum=0;
+    for (int i=0; i<P; i++){
+      if(gals[i].evian()){sum++;}
+   }
+    System.out.println("the number of evians is " + sum);
     
   }
 }
