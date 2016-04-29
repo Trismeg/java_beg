@@ -1,6 +1,6 @@
 public class GridX{
   
-  static int D = 5;
+  static int D = 20;
   static int[][] grid = new int[D][D];
   static int[][] gridB = new int[D][D];
   static boolean[][] gridC = new boolean[D][D];
@@ -13,7 +13,16 @@ public class GridX{
         else {grid[i][j]=0;}
       }}}
   
-  
+  public static void connect(int a, int b){
+    if((a<0 | a>(D-1))|(b<0 | b>(D-1))){}
+    else if(gridC[a][b]){}
+    else if(grid[a][b]==0){gridC[a][b]=true;}
+    else {
+      total=total+1;
+      gridB[a][b]=1;
+      gridC[a][b]=true;
+      connect(a-1,b); connect(a+1,b); connect(a,b-1); connect(a,b+1);
+    }}
        
   public static void print( int[][] arr){
     for(int i=0; i<arr.length; i++){
@@ -27,9 +36,9 @@ public class GridX{
     fill(0.5);
     print(grid);
     //print(gridB);
-    //connect(1,1);
+    connect(1,1);
     System.out.println("-----------------");
-    //print(gridB);
+    print(gridB);
    
   
 }
