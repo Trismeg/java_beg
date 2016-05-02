@@ -40,7 +40,7 @@ public class Merge{
 
   public static void main(String[] args){
     
-    int[] numbs={5,2,3,4,8,9,1,4,2,5,3,4,2,3,2};
+    int[] numbs={5,2,3,4,8,9,1,4};
     
     for(int n=0; n<numbs.length; n++){
       System.out.print(numbs[n] + " ");}

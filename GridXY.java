@@ -1,4 +1,4 @@
-public class GridX{
+public class GridXY{
   
   
   static int D = 10;
@@ -43,10 +43,13 @@ public class GridX{
       System.out.println(it +""+ it.x + it.y);
       it=it.link;}}
     
-    
+   public static void printLink2(Linq it){
+    while( !(it==null) ){
+      System.out.println(it +" "+ it.x + it.y);
+      it=it.link;}} 
   
   public static void main(String[] args){
-    fill(0.5);
+    fill(0.7);
     print(grid);
     //print(gridB);
     connect(1,1);
