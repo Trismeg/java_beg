@@ -46,7 +46,7 @@ public class GridX{
     
   
   public static void main(String[] args){
-    fill(0.5);
+    fill(0.8);
     print(grid);
     //print(gridB);
     connect(1,1);
