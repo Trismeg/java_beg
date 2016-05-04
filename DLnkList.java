@@ -1,17 +1,18 @@
 public class DLnkList{
   
-  private Lnk head = null;
+  private DLnk head = new DLnk();
   public int length = 0;
   
-  public LnkList(){}
+  public DLnkList(){}
   
-  public void addLnk(Lnk newlink){
+  public void addDLnk(DLnk newlink){
     newlink.setNext(this.head);
+    this.head.setPrev(newlink);
     this.head=newlink;
     length=length + 1;}
 
-  public Lnk getiLnk(int i){
-    Lnk it = this.head;
+  public DLnk getiLnk(int i){
+    DLnk it = this.head;
     while(i>0){
       it=it.getNext();
       i=i-1;}
@@ -21,7 +22,7 @@ public class DLnkList{
     this.head=this.head.getNext();
     length = length -1;}
   
-  public Lnk getHead(){
+  public DLnk getHead(){
     return this.head;}
    
 }

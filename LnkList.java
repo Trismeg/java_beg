@@ -1,6 +1,6 @@
 public class LnkList{
   
-  private Lnk head = null;
+  private Lnk head = new Lnk();
   public int length = 0;
   
   public LnkList(){}
