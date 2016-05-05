@@ -20,6 +20,7 @@ public class DLnkList{
   
   public void removeHead(){
     this.head=this.head.getNext();
+    this.head.setPrev(null);
     length = length -1;}
   
   public DLnk getHead(){
