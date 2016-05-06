@@ -6,6 +6,9 @@ public class DLnk{
   
   public DLnk(){}
   
+  public DLnk(Object obj){
+    this.payload=obj;}
+  
   public DLnk(DLnk next, DLnk prev){
     this.next=next;
     this.prev=prev;}

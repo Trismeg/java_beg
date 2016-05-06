@@ -34,13 +34,13 @@ public class Queue{
     return it;}
  
   public DLnk remove(){
-    DLnk output = this.head.getPrev();
-    this.head=output;
+    DLnk output = this.head;
     removeHead();
+    this.head=this.head.getPrev();
     return output;}
   
   public DLnk peek(){
-    return this.head.getPrev();}
+    return this.head;}
   
   public void removeHead(){
     this.head.getPrev().setNext(head.getNext());

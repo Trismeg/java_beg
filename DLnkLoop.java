@@ -2,6 +2,7 @@ public class DLnkLoop{
   
   private DLnk head= new DLnk();
   public int length = 0;
+  private boolean s=true;
    
   public DLnkLoop(){
     head.setNext(head); 
@@ -9,15 +10,18 @@ public class DLnkLoop{
     this.length=this.length + 1;}
   
   public DLnkLoop(DLnk newlink){
+    s=false;
     this.head=newlink;
     this.head.setNext(head); 
     this.length=this.length + 1;}
   
   public void addDLnk(DLnk newlink){
+    
     newlink.setNext(this.head.getNext());
     this.head.getNext().setPrev(newlink);
     newlink.setPrev(this.head);
     this.head.setNext(newlink);
+    if(s){removeHead(); s=false;}
     length=length + 1;}
 
   public DLnk getiLnk(int i){
