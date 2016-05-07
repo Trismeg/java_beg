@@ -1,11 +1,11 @@
-public class HelloNode{
+public class HelloDNode{
   
   public static void main(String[] args){
-    Node node1 = new Node();
-    Node node2 = new Node();
-    Node node3 = new Node();
-    Node node4 = new Node();
-    Node node5 = new Node();
+    DNode node1 = new DNode();
+    DNode node2 = new DNode();
+    DNode node3 = new DNode();
+    DNode node4 = new DNode();
+    DNode node5 = new DNode();
     node1.addNext(node2);
     node1.addNext(node3);
     node1.addNext(node4);
@@ -22,22 +22,38 @@ public class HelloNode{
         
     for(int i=0;i<node1.nexts.length;i++){
       System.out.println(node1.getNextI(i));}
+    System.out.println("next/prev");
+    for(int i=0;i<node1.prevs.length;i++){
+      System.out.println(node1.getNextI(i));}   
     System.out.println("1");
   
     for(int i=0;i<node2.nexts.length;i++){
       System.out.println(node2.getNextI(i));}
+    System.out.println("next/prev");
+    for(int i=0;i<node2.prevs.length;i++){
+      System.out.println(node2.getNextI(i));}   
     System.out.println("2");
+    
     
     for(int i=0;i<node3.nexts.length;i++){
       System.out.println(node3.getNextI(i));}
+    System.out.println("next/prev");
+    for(int i=0;i<node3.prevs.length;i++){
+      System.out.println(node3.getNextI(i));}   
     System.out.println("3");
     
     for(int i=0;i<node4.nexts.length;i++){
       System.out.println(node4.getNextI(i));}
-    System.out.println("4");
+    System.out.println("next/prev");
+    for(int i=0;i<node4.prevs.length;i++){
+      System.out.println(node4.getNextI(i));}   
+    System.out.println("3");
     
     for(int i=0;i<node5.nexts.length;i++){
       System.out.println(node5.getNextI(i));}
+    System.out.println("next/prev");
+    for(int i=0;i<node5.prevs.length;i++){
+      System.out.println(node5.getNextI(i));}   
     System.out.println("5");
      
   }
