@@ -1,6 +1,8 @@
 public class DNode{
   
   private Object payload;
+  public double x,y;
+  public int n;
   public DLnkLoop nexts = new DLnkLoop();
   public DLnkLoop prevs = new DLnkLoop();
   

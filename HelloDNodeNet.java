@@ -4,30 +4,33 @@ public class HelloDNodeNet{
     
     DNodeNet net = new DNodeNet();
     
-    for(int i=0; i<5; i++){
+    double k = 0.08;
+    int L=50;
+    
+    for(int i=0; i<L; i++){
       net.addDNode(new DNode());}
     
-    net.flow(0,1);
-    net.flow(0,2);
-    net.flow(0,3);
-    net.flow(0,4);
+    for(int i=0; i<net.nodes.length; i++){
+      for(int j=0; j<net.nodes.length;j++){
+        if(Math.random()<k){
+          net.flow(i,j);}}}
     
-    net.flow(1,3);
-    net.flow(1,4);
+
+//    for(int i=0; i<L; i++){
+//      net.printI(i);}
     
-    net.flow(2,0);
-    net.flow(2,1);
+    StdDraw.setXscale( -1.1 , 1.1);
+    StdDraw.setYscale(-1.1 , 1.1 ); 
     
-    net.flow(3,0);
-    net.flow(3,0);
-    net.flow(3,4);
+//    for(int i=0;i<L;i++){
+//      StdDraw.circle(Math.cos(6.28*i/L), Math.sin(6.28*i/L), 0.05);
+//    StdDraw.text(Math.cos(6.28*i/L), Math.sin(6.28*i/L), Integer.toString(i));}
     
-    net.flow(4,1);
-    net.flow(4,2);
-   
-    for(int i=0; i<5; i++){
-      net.printI(i);}
+    net.circle();
     
-     
+    for(int i=0;i<L;i++)
+    { net.graphI(i);}
+    
+    
   }
 }
