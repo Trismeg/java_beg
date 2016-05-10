@@ -4,8 +4,8 @@ public class HelloDNodeNet{
     
     DNodeNet net = new DNodeNet();
     
-    double k = 0.08;
-    int L=50;
+    double k = 0.05;
+    int L=500;
     
     for(int i=0; i<L; i++){
       net.addDNode(new DNode());}

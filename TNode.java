@@ -1,9 +1,12 @@
-public class HelloTree{
- 
-    
-  public static TNode getI(int i, TNode root){
+public class TNode{
+  
+  public Object payload;
+  public TNode left;
+  public TNode right;
+
+public TNode getI(int i){
     String bin = Integer.toBinaryString(i);
-    TNode read = root;
+    TNode read = this;
     for(int j=1;j<bin.length();j++)
     { if(bin.charAt(j)=='0'){
         if(read.left==null){return null;}
@@ -14,17 +17,15 @@ public class HelloTree{
       }
     return read;
   }
-  
-  public static int empty(TNode root){
+
+ public int empty(){
     int i=1;
     while(true){
-      if(getI(i,root)==null){return i;}
+      if(this.getI(i)==null){return i;}
       i++;}
   }
-  
-  
-  
-  public static void main(String[] args){
+
+ public static void main(String[] args){
     TNode node1 = new TNode();
     TNode node2 = new TNode();
     TNode node3 = new TNode();
@@ -34,18 +35,12 @@ public class HelloTree{
     node1.right=node3;   
     node2.left=node4;
     node2.right=node5;
-    
-    //printtree(node1);
-    
-    
+       
     for(int i=1;i<7;i++){
-    System.out.println(i+" " + getI(i,node1));
+    System.out.println(i+" " + node1.getI(i));
     }
     
-    System.out.println("empty " + empty(node1));
-    
-        
-    
-     
+    System.out.println("empty " + node1.empty());    
   }
+ 
 }
