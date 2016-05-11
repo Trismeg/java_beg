@@ -31,6 +31,8 @@ public TNode getI(int i){
    if((open%2)==0){
      this.getI(parent).left=newnode;}
    else{this.getI(parent).right=newnode;}}
+ 
+ 
 
  public int count(){
   int sum = 0;
@@ -42,6 +44,10 @@ public TNode getI(int i){
   else{sum=sum+this.right.count();}
   return sum;
  }
+ 
+ public boolean isComplete(){
+   if(this.empty()==(this.count()+1)){return true;}
+   else{ return false;}}
  
  public static void main(String[] args){
     TNode node1 = new TNode();
@@ -61,7 +67,8 @@ public TNode getI(int i){
     }
     
     System.out.println("empty " + node1.empty());    
-  System.out.println("count " + node1.count());  
+  System.out.println("count " + node1.count()); 
+  System.out.println("complete " + node1.isComplete());
  
  TNode nodeA = new TNode();
  node1.add(nodeA);
@@ -70,6 +77,7 @@ public TNode getI(int i){
     System.out.println(i+" " + node1.getI(i));
     }
  System.out.println("empty " + node1.empty());
- System.out.println("count " + node1.count()); 
+ System.out.println("count " + node1.count());
+ System.out.println("complete " + node1.isComplete());
  } 
 }
