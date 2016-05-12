@@ -74,6 +74,17 @@ public TNode getI(int i){
    }
    }
  
+ //switcheroo swaps the objects in TNode i and j
+ public void switcheroo(int i, int j){
+   if( this.getI(i)==null | this.getI(j)==null){}
+   else{
+   Object temp = this.getI(i).payload;
+   this.getI(i).payload=this.getI(j);
+   this.getI(j).payload=temp;}}
+ 
+ 
+   
+ 
  public static void main(String[] args){
     TNode node1 = new TNode();
     TNode node2 = new TNode();
