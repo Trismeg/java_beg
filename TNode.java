@@ -25,8 +25,20 @@ public TNode getI(int i){
       i++;}
   }
  
+ public void remove(int i){
+   int parent=i/2;
+   if((i%2)==0){
+   this.getI(parent).left=null;}
+   else{this.getI(parent).right=null;}}
+ 
  public void add(TNode newnode){
    int open = this.empty();
+   int parent=open/2;
+   if((open%2)==0){
+     this.getI(parent).left=newnode;}
+   else{this.getI(parent).right=newnode;}}
+ 
+ public void add(TNode newnode, int open){
    int parent=open/2;
    if((open%2)==0){
      this.getI(parent).left=newnode;}
@@ -49,18 +61,33 @@ public TNode getI(int i){
    if(this.empty()==(this.count()+1)){return true;}
    else{ return false;}}
  
+ public void completer(){
+   int space = 0;
+   int i;
+   while(!(this.isComplete())){
+     space=this.empty();
+     i = space + 1;
+     while(this.getI(i)==null){
+       i++;}
+     this.add(getI(i), space);
+     this.remove(i);       
+   }
+   }
+ 
  public static void main(String[] args){
     TNode node1 = new TNode();
     TNode node2 = new TNode();
     TNode node3 = new TNode();
     TNode node4 = new TNode();
     TNode node5 = new TNode();
+    TNode nodeA = new TNode();
     TNode nodeB = new TNode();
     node1.left=node2;
     node1.right=node3;   
     node2.left=node4;
-    node2.right=node5;
-    node3.right=nodeB;
+    //node2.right=node5;
+    node3.right=nodeA;
+    node4.left=nodeB;
        
     for(int i=1;i<10;i++){
     System.out.println(i+" " + node1.getI(i));
@@ -70,9 +97,11 @@ public TNode getI(int i){
   System.out.println("count " + node1.count()); 
   System.out.println("complete " + node1.isComplete());
  
- TNode nodeA = new TNode();
- node1.add(nodeA);
+ //TNode nodeA = new TNode();
+ //node1.add(nodeA);
  
+ node1.completer(); 
+  
  for(int i=1;i<10;i++){
     System.out.println(i+" " + node1.getI(i));
     }
