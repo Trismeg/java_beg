@@ -129,8 +129,20 @@ public TNode getI(int i){
         StdDraw.line(d, y, d+1.0/Math.pow(2,y), y+1);}
   }}
      
- 
+  public void print1(){
+    System.out.println((Integer)(this.payload));  
+    if(this.left!=null){this.left.print1();}
+    if(this.right!=null){this.right.print1();}}
   
+   public void print2(){    
+    if(this.left!=null){this.left.print2();}
+    System.out.println((Integer)(this.payload));
+    if(this.right!=null){this.right.print2();}}
+   
+    public void print3(){   
+    if(this.left!=null){this.left.print3();}
+    if(this.right!=null){this.right.print3();}
+    System.out.println((Integer)(this.payload));}
  
  public static void main(String[] args){
     TNode node1 = new TNode(); node1.payload=new Integer(11);
@@ -140,12 +152,18 @@ public TNode getI(int i){
     TNode node5 = new TNode(); node5.payload=new Integer(6);
     TNode nodeA = new TNode(); nodeA.payload=new Integer(5);
     TNode nodeB = new TNode(); nodeB.payload=new Integer(7);
+    TNode nodeC = new TNode(); nodeC.payload=new Integer(7);
+    TNode nodeD = new TNode(); nodeD.payload=new Integer(7);
+    TNode nodeE = new TNode(); nodeE.payload=new Integer(7);
     node1.left=node2;
     node1.right=node3;   
     node2.left=node4;
     node2.right=node5;
     node3.right=nodeA;
     node4.left=nodeB;
+//    nodeB.left=nodeC;
+//    nodeC.left=nodeD;
+//    nodeD.left=nodeE;
        
     for(int i=1;i<10;i++){
     System.out.println(i+" " + node1.getI(i));
@@ -176,6 +194,11 @@ public TNode getI(int i){
  node1.bubble();
  
  for(int i=1;i<20;i++){node1.graphI(i);}
- 
+ node1.print1();
+ System.out.println("ONE");
+ node1.print2();
+ System.out.println("TWO");
+ node1.print3();
+ System.out.println("THREE");
  } 
 }
