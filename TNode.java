@@ -79,10 +79,22 @@ public TNode getI(int i){
    if( this.getI(i)==null | this.getI(j)==null){}
    else{
    Object temp = this.getI(i).payload;
-   this.getI(i).payload=this.getI(j);
+   this.getI(i).payload=this.getI(j).payload;
    this.getI(j).payload=temp;}}
+
+ //assume tree is complete
+ public boolean bubblePass(){
+   boolean flag=false;
+   int deep = this.empty();
+   for(int i=2; i<deep; i++){
+     if(((Integer)(this.getI(i).payload))<((Integer)(this.getI(i/2).payload))){
+       this.switcheroo(i,i/2);
+       flag=true;}}
+   return flag;}
  
- 
+ public void bubble(){
+   while(this.bubblePass()){this.bubblePass();}}
+     
  
  
  
@@ -114,10 +126,10 @@ public TNode getI(int i){
   
  
  public static void main(String[] args){
-    TNode node1 = new TNode(); node1.payload=new Integer(5);
+    TNode node1 = new TNode(); node1.payload=new Integer(11);
     TNode node2 = new TNode(); node2.payload=new Integer(8);
     TNode node3 = new TNode(); node3.payload=new Integer(10);
-    TNode node4 = new TNode(); node4.payload=new Integer(5);
+    TNode node4 = new TNode(); node4.payload=new Integer(15);
     TNode node5 = new TNode(); node5.payload=new Integer(6);
     TNode nodeA = new TNode(); nodeA.payload=new Integer(5);
     TNode nodeB = new TNode(); nodeB.payload=new Integer(7);
@@ -153,6 +165,8 @@ public TNode getI(int i){
  System.out.println("empty " + node1.empty());
  System.out.println("count " + node1.count());
  System.out.println("complete " + node1.isComplete());
+ 
+ node1.bubble();
  
  for(int i=1;i<20;i++){node1.graphI(i);}
  
