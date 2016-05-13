@@ -83,20 +83,48 @@ public TNode getI(int i){
    this.getI(j).payload=temp;}}
  
  
-   
+ 
+ 
+ 
+ 
+  public void graphI(int i){
+    TNode read = this.getI(i);   
+    if (read!=null){
+      String bin = Integer.toBinaryString(i);      
+      int height = bin.length()-1;
+      int y=height;
+      double d=0;      
+      for(int j=1;j<bin.length();j++){
+        if(bin.charAt(j)=='0'){d=d-1.0/( Math.pow(2,j-1));}
+        else{d=d+1.0/( Math.pow(2,j-1));}}
+      StdDraw.circle(d,y , 0.1);
+      StdDraw.setPenColor(StdDraw.RED);
+     StdDraw.text(d-0.2, y, Integer.toString(i));
+     StdDraw.setPenColor(StdDraw.BLUE);
+     StdDraw.textLeft(d+0.2, y, read.payload.toString());
+     StdDraw.setPenColor();
+     // StdDraw.text(d+0.2, y, read.toString());
+      if(read.left != null){
+        StdDraw.line(d, y, d-1.0/Math.pow(2,y), y+1);}
+      if(read.right != null){
+        StdDraw.line(d, y, d+1.0/Math.pow(2,y), y+1);}
+  }}
+     
+ 
+  
  
  public static void main(String[] args){
-    TNode node1 = new TNode();
-    TNode node2 = new TNode();
-    TNode node3 = new TNode();
-    TNode node4 = new TNode();
-    TNode node5 = new TNode();
-    TNode nodeA = new TNode();
-    TNode nodeB = new TNode();
+    TNode node1 = new TNode(); node1.payload=new Integer(5);
+    TNode node2 = new TNode(); node2.payload=new Integer(8);
+    TNode node3 = new TNode(); node3.payload=new Integer(10);
+    TNode node4 = new TNode(); node4.payload=new Integer(5);
+    TNode node5 = new TNode(); node5.payload=new Integer(6);
+    TNode nodeA = new TNode(); nodeA.payload=new Integer(5);
+    TNode nodeB = new TNode(); nodeB.payload=new Integer(7);
     node1.left=node2;
     node1.right=node3;   
     node2.left=node4;
-    //node2.right=node5;
+    node2.right=node5;
     node3.right=nodeA;
     node4.left=nodeB;
        
@@ -108,6 +136,12 @@ public TNode getI(int i){
   System.out.println("count " + node1.count()); 
   System.out.println("complete " + node1.isComplete());
  
+  StdDraw.setXscale( -3 , 3);
+  StdDraw.setYscale(6 , -0.1 );
+  
+  
+  
+  
  //TNode nodeA = new TNode();
  //node1.add(nodeA);
  
@@ -119,5 +153,8 @@ public TNode getI(int i){
  System.out.println("empty " + node1.empty());
  System.out.println("count " + node1.count());
  System.out.println("complete " + node1.isComplete());
+ 
+ for(int i=1;i<20;i++){node1.graphI(i);}
+ 
  } 
 }
