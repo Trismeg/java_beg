@@ -87,9 +87,16 @@ public TNode getI(int i){
    boolean flag=false;
    int deep = this.empty();
    for(int i=2; i<deep; i++){
-     if(((Integer)(this.getI(i).payload))<((Integer)(this.getI(i/2).payload))){
+     
+       if(i%2==0){
+       if(((Integer)(this.getI(i).payload))>((Integer)(this.getI(i+1).payload))){
+       this.switcheroo(i,i+1);
+       flag=true;}
+       
+       if(((Integer)(this.getI(i).payload))<((Integer)(this.getI(i/2).payload))){
        this.switcheroo(i,i/2);
-       flag=true;}}
+       flag=true;}
+     }}
    return flag;}
  
  public void bubble(){
