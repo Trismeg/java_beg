@@ -151,10 +151,10 @@ public TNode getI(int i){
     TNode node4 = new TNode(); node4.payload=new Integer(15);
     TNode node5 = new TNode(); node5.payload=new Integer(6);
     TNode nodeA = new TNode(); nodeA.payload=new Integer(5);
-    TNode nodeB = new TNode(); nodeB.payload=new Integer(7);
-    TNode nodeC = new TNode(); nodeC.payload=new Integer(7);
-    TNode nodeD = new TNode(); nodeD.payload=new Integer(7);
-    TNode nodeE = new TNode(); nodeE.payload=new Integer(7);
+    TNode nodeB = new TNode(); nodeB.payload=new Integer(17);
+    TNode nodeC = new TNode(); nodeC.payload=new Integer(70);
+    TNode nodeD = new TNode(); nodeD.payload=new Integer(78);
+    TNode nodeE = new TNode(); nodeE.payload=new Integer(72);
     node1.left=node2;
     node1.right=node3;   
     node2.left=node4;
