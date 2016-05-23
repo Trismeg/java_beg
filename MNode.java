@@ -8,7 +8,7 @@ public class MNode{
   MNode left;
   MNode right;
   
-  public MNode(){}
+  public MNode(){};
   
   public MNode(String pay){
     this.pay=pay;}
@@ -47,7 +47,7 @@ public class MNode{
   public static MNode[] merkle(String[] words){
     MNode[] output = new MNode[words.length];
     for(int i=0; i<words.length; i++){
-       output[i].pay=sha256(words[i]);}
+       output[i]=new MNode(sha256(words[i]));}
     return merkle(output);}
   
   public static MNode[] merkle(MNode[] hashes){
@@ -55,18 +55,23 @@ public class MNode{
     else{
       MNode[] even = evenize(hashes);
       MNode[] up = new MNode[even.length/2];
-      for(int i=0; i<even.length; i++){
+      for(int i=0; i<up.length; i++){
         up[i]=even[2*i].merge(even[2*i+1]);}
       return merkle(up);}}
       
        
    public static void main(String[] args) {
-        String data="yoyoyo";
-        String hash = sha256(data);
-        MNode node = new MNode();
-        node.pay=data;
-        String hash2=node.sha256();
-        System.out.println("The SHA256 (hexadecimal encoded) hash is:"+hash);
-        System.out.println("The SHA256 (hexadecimal encoded) hash is:"+hash2);
+        String[] test = new String[7];
+        test[0]="hi";
+        test[1]="hiya";
+        test[2]="ho";
+        test[3]="hey";
+        test[4]="hu";
+        test[5]="ih";
+        test[6]="hy";
+        
+        String merk = merkle(test)[0].pay;       
+        System.out.println(merk);
+
     }
 }
