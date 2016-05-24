@@ -90,7 +90,15 @@ public class MNode{
         noi=noi/2; digi=digi+"O";}}
     output[depth]=digi;
     return output;}
-      
+ 
+  public static boolean verify(String[] cert, String data, String root){
+    String hash = sha256(data);
+    String dir = cert[cert.length-1];
+    for(int i =0; i<dir.length(); i++){
+          if(dir.charAt(i)=='E'){hash=sha256(hash+cert[i]);}
+          else{hash=sha256(cert[i]+hash);}}
+    return root.equals(hash);}
+    
        
    public static void main(String[] args) {
         String[] test = new String[7];
@@ -104,11 +112,14 @@ public class MNode{
         
         MNode merk = merkle(test)[0];      
         System.out.println(merk.pay);
-//        String[] proof=merk.certificate(7,7);
+        String[] proof=merk.certificate(5,7);
+        
+        System.out.println(verify(proof,"hu",merk.pay));
+//        String[] proof=merk.certificate(6,7);
 //        for(int i=0;i<proof.length;i++){
 //          System.out.println(proof[i]);}
 //       
-//        String h1 = sha256(test[6]);
+//        String h1 = sha256(test[5]);
 //        String dir = proof[proof.length-1];
 //          
 //        for(int i =0; i<dir.length(); i++){
