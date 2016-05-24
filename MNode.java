@@ -58,6 +58,38 @@ public class MNode{
       for(int i=0; i<up.length; i++){
         up[i]=even[2*i].merge(even[2*i+1]);}
       return merkle(up);}}
+     
+  public static String merkleRoot(String[] words){
+    return merkle(words)[0].pay;}
+  
+  public MNode getI(int i){
+    String bin = Integer.toBinaryString(i);
+    MNode read = this;
+    for(int j=1;j<bin.length();j++)
+    { if(bin.charAt(j)=='0'){
+        if(read.left==null){return null;}
+        else{read=read.left;}}
+      else{
+        if(read.right==null){return null;}
+        else{read=read.right;}}
+      }
+    return read;
+  }
+  
+  public String[] certificate(int n, int m){
+    int depth = (int) Math.ceil(Math.log(m)/Math.log(2));
+    int noi = (int)Math.pow(2,depth)+(n-1);
+    String[] output = new String[depth+1];
+    String digi=new String("");
+    for(int i=0; i<depth;i++){
+      if(noi%2==0){
+        output[i]=this.getI(noi+1).pay;
+        noi=noi/2; digi=digi+"E";}
+      else{
+        output[i]=this.getI(noi-1).pay;
+        noi=noi/2; digi=digi+"O";}}
+    output[depth]=digi;
+    return output;}
       
        
    public static void main(String[] args) {
@@ -70,8 +102,19 @@ public class MNode{
         test[5]="ih";
         test[6]="hy";
         
-        String merk = merkle(test)[0].pay;       
-        System.out.println(merk);
-
+        MNode merk = merkle(test)[0];      
+        System.out.println(merk.pay);
+//        String[] proof=merk.certificate(7,7);
+//        for(int i=0;i<proof.length;i++){
+//          System.out.println(proof[i]);}
+//       
+//        String h1 = sha256(test[6]);
+//        String dir = proof[proof.length-1];
+//          
+//        for(int i =0; i<dir.length(); i++){
+//          if(dir.charAt(i)=='E'){h1=sha256(h1+proof[i]);}
+//          else{h1=sha256(proof[i]+h1);}}
+//       System.out.println(h1);
+//       System.out.println(h1.equals(merk.pay));
     }
 }
